@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .area {
+        @apply max-w-screen-xl w-[90%] overflow-hidden
+    }
+}
