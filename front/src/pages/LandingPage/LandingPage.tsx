@@ -1,9 +1,11 @@
+import React from 'react'
+import Header from './Header/Header'
 
 function LandingPage() {
   return (
-    <header className="">
-      
-    </header>
+    <>
+        <Header/>
+    </>
   )
 }
 

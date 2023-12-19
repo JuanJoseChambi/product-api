@@ -4,6 +4,6 @@
 
 @layer components {
     .area {
-        @apply max-w-screen-xl w-[90%] overflow-hidden
+        @apply max-w-screen-xl w-[95%] mx-auto overflow-hidden
     }
 }
