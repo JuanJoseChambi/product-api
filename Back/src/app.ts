@@ -21,6 +21,6 @@ server.use((req, res, next) => { //middleware de cors de seguirdad de accesos y 
     next();
   });
 
-server.use("/", router)
+server.use("/api", router)
 
 export default server
