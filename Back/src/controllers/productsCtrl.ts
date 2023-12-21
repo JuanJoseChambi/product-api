@@ -1,12 +1,37 @@
 import { Request, Response } from "express"
 import ProductoApi from "../models/Productos";
-import allCreate from "../utils/productsData";
+import { paginationHandler } from "../handlers/paginationHandler";
+import { ProductsData } from "../interfaces/interfaces";
 
 
 export const allProducts = async (req:Request, res:Response) => {
     const result = await ProductoApi.find({})
     const totalResults = result.length
     res.status(200).json({data: result, TotalResults:totalResults})
+    // res.status(200).json(result)
+}
+
+export const pageProducts = async (req:Request, res:Response) => {
+    const {page} = req.query;
+    
+    const pageNumber = page ? Number(page) : 1;
+
+    const products = await ProductoApi.find({})
+    
+    const productsData: ProductsData[] = products.map(product => product.toObject());
+
+    const productsInPage = paginationHandler(productsData, pageNumber)
+    const allProducts = products.length;
+    const totalResults = productsInPage.length;
+
+    res.status(200).json(
+        {results: productsInPage ? productsInPage : "No exist more Products", 
+        info:{totalResults:totalResults ,
+        allProducts:allProducts, 
+        nextPage:`http://localhost:3001/api/v1/product/page/?page=${pageNumber+1}`,
+        prevPage:pageNumber - 1 === 0 ? null : `http://localhost:3001/api/v1/product/page/?page=${pageNumber-1}`
+    }}
+        )
 }
 
 export const uploadProduct = async (req:Request, res:Response) => {
