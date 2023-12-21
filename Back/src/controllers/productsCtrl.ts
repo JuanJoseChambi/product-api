@@ -23,14 +23,14 @@ export const pageProducts = async (req:Request, res:Response) => {
     const productsInPage = paginationHandler(productsData, pageNumber)
     const allProducts = products.length;
     const totalResults = productsInPage.length;
-
+    const pages = Math.ceil(allProducts / 10);
     res.status(200).json(
-        {results: productsInPage ? productsInPage : "No exist more Products", 
-        info:{totalResults:totalResults ,
-        allProducts:allProducts, 
-        nextPage:`http://localhost:3001/api/v1/product/page/?page=${pageNumber+1}`,
+        {info:{totalResults:totalResults ,
+        pages:pages, 
+        nextPage:pageNumber === pages? null : `http://localhost:3001/api/v1/product/page/?page=${pageNumber+1}`,
         prevPage:pageNumber - 1 === 0 ? null : `http://localhost:3001/api/v1/product/page/?page=${pageNumber-1}`
-    }}
+        },
+        results: productsInPage ? productsInPage : "No exist more Products", }
         )
 }
 
