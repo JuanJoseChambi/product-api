@@ -17,13 +17,31 @@ interface allProducts {
   TotalResults:number;
   data:Products[]
 }
+interface FilterProducts {
+  totalResults:number;
+  results:Products[]
+}
+
+interface ValueInputs {
+  name:string | null;
+  category:string | null;
+  type:string | null;
+  brand:string | null;
+}
 
 function ControlApi() {
 
     
   const [paginationProducts, setPaginationProducts] = useState<PaginationProducts | null>()
   const [allProducts, setAllProducts] = useState<Products[] | null>()
-  // const [products, setProducts] = useState<Products[]>([])
+  const [filterProducts, setFilterProducts] = useState<FilterProducts | null>()
+  const [valueInputs, setValueInputs] = useState<ValueInputs>({
+    name:null,
+    category:null,
+    type:null,
+    brand:null
+  })
+
 
   useEffect(() => {
   
@@ -61,10 +79,6 @@ function ControlApi() {
     
   }, [])
 
-  // function handlerEditProduct (id:string, editProduct:string | number) {
-
-  // }
-
   async function handlerPagination(url: string) {
     try {
       const response = await fetch(url);
@@ -98,9 +112,26 @@ function ControlApi() {
     }
   }
 
-  // const firstProduct = products.filter(product => product._id === "658207cccedcef91d4cd5d7b")
-
+  async function handlerFilterProducts() {
+    // try {
+    //   const response = await fetch(`http://localhost:3001/api/v1/product/filter/?${name:valueInputs.name}`)
+    //   // if (!response.ok) {
+    //   //   throw new Error(`Error de red: ${response.status}`);
+    //   // }
   
+    //   const data: allProducts = await response.json();
+
+    //   console.log(data);
+      
+    //   setPaginationProducts(null)
+    //   setAllProducts(data.data);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+  }
+
+
+
   return (
     <header className="flex flex-col justify-center items-center  bg-[#e2e0e0]">
 
@@ -137,7 +168,7 @@ function ControlApi() {
         <section className="flex justify-center items-center space-x-1">
           <form>
             <label>Filtrar por Nombre</label>
-            <input type="text" placeholder="Producto" />
+            <input type="text" onChange={(e) => setValueInputs({...valueInputs ,name: e.target.value})} placeholder="Producto" />
           </form>
           <form>
             <label>Filtrar por Categoria</label>
@@ -160,7 +191,7 @@ function ControlApi() {
       {paginationProducts ? paginationProducts?.results?.map((product, i) => (
         <section key={product._id} className="w-[300px] h-[400px] flex flex-col justify-evenly items-start p-2 m-2 bg-redd-500">
           <picture className="w-full h-[150px] flex justify-center items-center bg-blue-500">
-              <img className="w-[250px]" src="Image Not Found" alt={product.description} ></img>
+              <img className="w-[250px]" src="Image Not Found" alt="Image Not Found" ></img>
           </picture>
           <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
 
@@ -179,7 +210,7 @@ function ControlApi() {
       {allProducts ? allProducts?.map((product, i) => (
         <section key={product._id} className="w-[300px] h-[400px] flex flex-col justify-evenly items-start p-2 m-2 bg-redd-500">
           <picture className="w-full h-[150px] flex justify-center items-center bg-blue-500">
-              <img className="w-[250px]" src="Image Not Found" alt={product.description} ></img>
+              <img className="w-[250px]" src="Image Not Found" alt="Image Not Found" ></img>
           </picture>
           <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
 
