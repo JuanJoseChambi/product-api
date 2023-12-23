@@ -10,4 +10,6 @@ export interface Products {
     stock: number
     available_colors: string[]
     sizes: string[]
+    createdAt:Date;
+    updatedAt:Date;
   }

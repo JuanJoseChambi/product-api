@@ -31,8 +31,9 @@ export const pageProducts = async (req:Request, res:Response) => {
     res.status(200).json(
         {info: {totalResults:totalResults ,
         pages:pages, 
-        nextPage:pageNumber > pages || pageNumber === pages ? null : `http://localhost:3001/api/v1/product/page/?page=${pageNumber < 0 ? pageNumber = 1 : pageNumber+1}`,
-        prevPage:pageNumber - 1 === 0 || pageNumber <= 0 ? null : `http://localhost:3001/api/v1/product/page/?page=${pageNumber-1}`
+        currentPage:Number(page),
+        nextPage:pageNumber > pages || pageNumber === pages ? null : `http://localhost:3001/api/v1/product/?page=${pageNumber < 0 ? pageNumber = 1 : pageNumber+1}`,
+        prevPage:pageNumber - 1 === 0 || pageNumber <= 0 ? null : `http://localhost:3001/api/v1/product/?page=${pageNumber > pages ? pageNumber = pages : pageNumber-1}`
         },
         results: pageNumber !== pages + 1? productsInPage : null}
         )
