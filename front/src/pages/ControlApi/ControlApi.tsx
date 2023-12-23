@@ -80,7 +80,7 @@ function ControlApi() {
 
   
   return (
-    <header className="min-h-screen w-full flex flex-wrap justify-center items-start bg-[#e2e0e0]">
+    <header className="flex flex-col justify-center items-center  bg-[#e2e0e0]">
 
     {/* {products?.map((product, i) => (
         <section key={product._id} className="w-[95%] h-[50px] flex flex-row justify-evenly items-center space-x-3 p-2 m-2 border-y border-neutral-400 bg-[#fff]">
@@ -102,28 +102,57 @@ function ControlApi() {
         </section>
       ))} */}
 
-      <button onClick={() => handlerPagination(products?.info.nextPage ?? "")} className="absolute top-0 right-0">Siguient</button>
-      <button onClick={() => handlerPagination(products?.info.prevPage ?? "")} className="absolute top-0 left-0">Anterior</button>
-      <h1 className="text-xl font-semibold absolute top-0">{products?.info.currentPage}</h1>
+      <section className="flex flex-col justify-center items-center ">
+        <section className="flex justify-center items-center space-x-10">
+          <button onClick={() => handlerPagination(products?.info.prevPage ?? "")} className="">Anterior</button>
+          <h1 className="text-xl font-semibold">{products?.info.currentPage}</h1>
+          <button onClick={() => handlerPagination(products?.info.nextPage ?? "")} className="">Siguiente</button>
+          <button>All Products</button>
+        </section>
 
+
+        <section className="flex justify-center items-center space-x-1">
+          <form>
+            <label>Filtrar por Nombre</label>
+            <input type="text" placeholder="Producto" />
+          </form>
+          <form>
+            <label>Filtrar por Categoria</label>
+            <input type="text" placeholder="Producto" />
+          </form>
+          <form>
+            <label>Filtrar por Tipo</label>
+            <input type="text" placeholder="Producto" />
+          </form>
+          <form>
+            <label>Filtrar por Marca</label>
+            <input type="text" placeholder="Producto" />
+          </form>
+
+        </section>
+
+      </section>
+
+      <section className="min-h-screen w-full flex flex-wrap justify-center items-start">
       {products?.results?.map((product, i) => (
-    <section key={product._id} className="w-[300px] h-[400px] flex flex-col justify-evenly items-start p-2 m-2 bg-redd-500">
-      <picture className="w-full h-[150px] flex justify-center items-center bg-blue-500">
-          <img className="w-[250px]" src="Image Not Found" alt={product.description} ></img>
-      </picture>
-      <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
+        <section key={product._id} className="w-[300px] h-[400px] flex flex-col justify-evenly items-start p-2 m-2 bg-redd-500">
+          <picture className="w-full h-[150px] flex justify-center items-center bg-blue-500">
+              <img className="w-[250px]" src="Image Not Found" alt={product.description} ></img>
+          </picture>
+          <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
 
-      <p className="flex justify-start items-center text-xs font-light">{product.brand} | {product.category}</p>
+          <p className="flex justify-start items-center text-xs font-light">{product.brand} | {product.category}</p>
 
-      <p className="text-sm font-light">{product.description}</p>
+          <p className="text-sm font-light">{product.description}</p>
 
-      <p className="text-sm font-light">{product.type}</p>
-      
-      <span className="flex justify-start items-center text-xs font-light">{product.sizes.map((size) => (<p key={size} className="mx-1">{size}</p>))} | {product.available_colors.map((color) => (<p key={color} className="mx-1">{color}</p>))}</span>
-      
-      <p className="font-medium text-xm">Price : {product.price} | Card {i+1}</p>
-    </section>
+          <p className="text-sm font-light">{product.type}</p>
+
+          <span className="flex justify-start items-center text-xs font-light">{product.sizes.map((size) => (<p key={size} className="mx-1">{size}</p>))} | {product.available_colors.map((color) => (<p key={color} className="mx-1">{color}</p>))}</span>
+
+          <p className="font-medium text-xm">Price : {product.price} | Card {i+1}</p>
+        </section>
   ))}
+      </section>
     </header>
   )
 }
