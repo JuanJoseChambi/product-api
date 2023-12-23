@@ -31,10 +31,11 @@ function ControlApi() {
   }
 
   const firstProduct = products.filter(product => product._id === "658207cccedcef91d4cd5d7b")
-
+  console.log(products);
+  
   return (
     <header className="min-h-screen w-full flex flex-wrap justify-center items-start bg-[#e2e0e0]">
-    {products?.map((product, i) => (
+    {/* {products?.map((product, i) => (
         <section key={product._id} className="w-[95%] h-[50px] flex flex-row justify-evenly items-center space-x-3 p-2 m-2 border-y border-neutral-400 bg-[#fff]">
             <p>{i+1}</p>
             <picture className="w-[100px] flex justify-center items-center bg-bluee-500">
@@ -52,7 +53,25 @@ function ControlApi() {
             
             <p className="font-light text-xs">Price:{product.price}</p>
         </section>
-      ))}
+      ))} */}
+      {products?.map((product) => (
+   <section key={product._id} className="w-[300px] h-[400px] flex flex-col justify-evenly items-start p-2 m-2 bg-redd-500">
+      <picture className="w-full h-[150px] flex justify-center items-center bg-blue-500">
+          <img className="w-[250px]" src={product.image} alt={product.description} ></img>
+      </picture>
+      <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
+
+      <p className="flex justify-start items-center text-xs font-light">{product.brand} | {product.category}</p>
+
+      <p className="text-sm font-light">{product.description}</p>
+
+      <p className="text-sm font-light">{product.type}</p>
+      
+      <span className="flex justify-start items-center text-xs font-light">{product.sizes.map((size) => (<p key={size} className="mx-1">{size}</p>))} | {product.available_colors.map((color) => (<p key={color} className="mx-1">{color}</p>))}</span>
+      
+     <p className="font-medium text-xm">Price : {product.price}</p>
+  </section>
+  ))}
     </header>
   )
 }

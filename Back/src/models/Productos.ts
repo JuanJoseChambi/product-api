@@ -2,25 +2,34 @@ import mongoose from "mongoose";
 
 const ProductsApi = new mongoose.Schema({
     name: {
-        type:String
+        type:String,
+        required:true
     },
     image:{
-        type:String
+        type:String,
+        required:true
     },
     description:{
-        type:String
+        type:String,
+        required:true
     },
     brand:{
         type:String
     },
     price: {
-        type:Number
+        type:Number,
+        required:true
     },
     category:{
         type:String
     },
+    type:{
+        type:String,
+        required:true
+    },
     stock: {
-        type:Number
+        type:Number,
+        required:true
     },
     available_colors:{
         type:[String]

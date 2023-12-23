@@ -6,6 +6,7 @@ export interface Products {
     brand: string
     price:  number
     category: string
+    type:string
     stock: number
     available_colors: string[]
     sizes: string[]
