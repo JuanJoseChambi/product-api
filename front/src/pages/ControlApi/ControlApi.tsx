@@ -113,49 +113,60 @@ function ControlApi() {
   }
 
   async function handlerFilterProducts() {
-    // try {
-    //   const response = await fetch(`http://localhost:3001/api/v1/product/filter/?${name:valueInputs.name}`)
-    //   // if (!response.ok) {
-    //   //   throw new Error(`Error de red: ${response.status}`);
-    //   // }
-  
-    //   const data: allProducts = await response.json();
-
-    //   console.log(data);
+    try {
+      if (!valueInputs.name && !valueInputs.brand && !valueInputs.category && !valueInputs.type) return null;
       
-    //   setPaginationProducts(null)
-    //   setAllProducts(data.data);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+      let params:string[] = [];
+      let paramsMany = "";
+      let paramsOne = "";
+
+      const arrayValue = Object.keys(valueInputs).map((key) => ({
+        key: key as keyof ValueInputs,
+        value: valueInputs[key as keyof ValueInputs]
+      }));
+      
+      // console.log(arrayValue);
+
+      arrayValue.forEach((param) => {
+        if (param.value) {
+          const valueParam = `${param.key}=${param.value}`
+          params.push(valueParam)
+        }
+      })
+
+      // params.length > 0 ? params.join("&") : params.join(" ");
+      if (params.length > 0) {
+        paramsMany = params.join("&")
+      }else{
+        paramsOne = params.join("")
+      }
+
+      console.log(paramsOne);
+      console.log(paramsMany);
+      
+
+      const response = await fetch(`http://localhost:3001/api/v1/product/filter/?${paramsOne ? paramsOne : paramsMany}`)
+  
+      const data: FilterProducts = await response.json();
+
+      // console.log(data);
+      
+      setPaginationProducts(null)
+      setAllProducts(null)
+      setFilterProducts(data);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
+  // console.log(filterProducts);
+  
 
 
   return (
     <header className="flex flex-col justify-center items-center  bg-[#e2e0e0]">
 
-    {/* {products?.map((product, i) => (
-        <section key={product._id} className="w-[95%] h-[50px] flex flex-row justify-evenly items-center space-x-3 p-2 m-2 border-y border-neutral-400 bg-[#fff]">
-            <p>{i+1}</p>
-            <picture className="w-[100px] flex justify-center items-center bg-bluee-500">
-                <img className="w-[50px]" src={product.image} alt="Image" ></img>
-            </picture>
-
-            <h1 key={product._id} className="font-regualr text-sm">{product.name} | {product.stock}</h1> 
-
-            <p className="text-sm font-light">{product.description}</p>
- 
-            <p className="flex justify-center items-center text-xs font-light">{product.brand} | {product.category}</p>
-            
-            <span className="flex justify-start items-center text-xs font-light">{product.sizes.map((size) => (<p key={size} className="mx-1">{size}</p>))}</span>
-            <span className="flex justify-start items-center text-xs font-light">{product.available_colors.map((color) => (<p key={color} className="mx-1">{color}</p>))}</span>
-            
-            <p className="font-light text-xs">Price:{product.price}</p>
-        </section>
-      ))} */}
-
-      <section className="flex flex-col justify-center items-center ">
+      <section className="flex flex-col justify-center items-center space-y-5">
         <section className="flex justify-center items-center space-x-10">
           <button onClick={() => handlerPagination("http://localhost:3001/api/v1/product/?page=1")}>Paginacion de Productos</button>
           <button onClick={() => handlerPagination(paginationProducts?.info.prevPage ?? "")} className="">Anterior</button>
@@ -165,29 +176,31 @@ function ControlApi() {
         </section>
 
 
-        <section className="flex justify-center items-center space-x-1">
-          <form>
+        <section className="flex justify-center items-center space-x-5">
+          <form className="w-[200px] bg-redd-500">
             <label>Filtrar por Nombre</label>
             <input type="text" onChange={(e) => setValueInputs({...valueInputs ,name: e.target.value})} placeholder="Producto" />
           </form>
-          <form>
+          <form className="w-[200px] bg-redd-500">
             <label>Filtrar por Categoria</label>
-            <input type="text" placeholder="Producto" />
+            <input type="text" onChange={(e) => setValueInputs({...valueInputs ,category: e.target.value})} placeholder="Producto" />
           </form>
-          <form>
+          <form className="w-[200px] bg-redd-500">
             <label>Filtrar por Tipo</label>
-            <input type="text" placeholder="Producto" />
+            <input type="text" onChange={(e) => setValueInputs({...valueInputs ,type: e.target.value})} placeholder="Producto" />
           </form>
-          <form>
+          <form className="w-[200px] bg-redd-500">
             <label>Filtrar por Marca</label>
-            <input type="text" placeholder="Producto" />
+            <input type="text" onChange={(e) => setValueInputs({...valueInputs ,brand: e.target.value})} placeholder="Producto" />
           </form>
 
         </section>
+        <button onClick={handlerFilterProducts} className="py-2 px-5 bg-black text-white rounded-xl ">Filtrar</button>
 
       </section>
 
       <section className="min-h-screen w-full flex flex-wrap justify-center items-start">
+
       {paginationProducts ? paginationProducts?.results?.map((product, i) => (
         <section key={product._id} className="w-[300px] h-[400px] flex flex-col justify-evenly items-start p-2 m-2 bg-redd-500">
           <picture className="w-full h-[150px] flex justify-center items-center bg-blue-500">
@@ -195,11 +208,9 @@ function ControlApi() {
           </picture>
           <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
 
-          <p className="flex justify-start items-center text-xs font-light">{product.brand} | {product.category}</p>
+          <p className="flex justify-start items-center text-xs font-light">M:{product.brand} | C:{product.category} | T:{product.type}</p>
 
           <p className="text-sm font-light">{product.description}</p>
-
-          <p className="text-sm font-light">{product.type}</p>
 
           <span className="flex justify-start items-center text-xs font-light">{product.sizes.map((size) => (<p key={size} className="mx-1">{size}</p>))} | {product.available_colors.map((color) => (<p key={color} className="mx-1">{color}</p>))}</span>
 
@@ -214,11 +225,9 @@ function ControlApi() {
           </picture>
           <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
 
-          <p className="flex justify-start items-center text-xs font-light">{product.brand} | {product.category}</p>
+          <p className="flex justify-start items-center text-xs font-light">M:{product.brand} | C:{product.category} | T:{product.type}</p>
 
           <p className="text-sm font-light">{product.description}</p>
-
-          <p className="text-sm font-light">{product.type}</p>
 
           <span className="flex justify-start items-center text-xs font-light">{product.sizes.map((size) => (<p key={size} className="mx-1">{size}</p>))} | {product.available_colors.map((color) => (<p key={color} className="mx-1">{color}</p>))}</span>
 
@@ -227,8 +236,22 @@ function ControlApi() {
       )):null}
 
 
+      {filterProducts?.results ? filterProducts.results?.map((product, i) => (
+        <section key={product._id} className="w-[300px] h-[400px] flex flex-col justify-evenly items-start p-2 m-2 bg-redd-500">
+          <picture className="w-full h-[150px] flex justify-center items-center bg-blue-500">
+              <img className="w-[250px]" src="Image Not Found" alt="Image Not Found" ></img>
+          </picture>
+          <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
 
+          <p className="flex justify-start items-center text-xs font-light">M:{product.brand} | C:{product.category} | T:{product.type}</p>
 
+          <p className="text-sm font-light">{product.description}</p>
+
+          <span className="flex justify-start items-center text-xs font-light">{product.sizes.map((size) => (<p key={size} className="mx-1">{size}</p>))} | {product.available_colors.map((color) => (<p key={color} className="mx-1">{color}</p>))}</span>
+
+          <p className="font-medium text-xm">Price : {product.price} | Card {i+1}</p>
+        </section>
+      )):null}
 
       </section>
     </header>
