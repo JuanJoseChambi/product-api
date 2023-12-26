@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Products } from "../../interfaces/interfaces"
+import Cards from "../../components/Cards/Cards";
 
 interface PageInfo {
   totalResults: number;
@@ -9,7 +10,7 @@ interface PageInfo {
   prevPage: string | null;
 }
 
-interface PaginationProducts {
+export interface PaginationProducts {
   info:PageInfo
   results:Products[]
 }
@@ -17,7 +18,7 @@ interface allProducts {
   TotalResults:number;
   data:Products[]
 }
-interface FilterProducts {
+export interface FilterProducts {
   totalResults:number;
   results:Products[]
 }
@@ -102,8 +103,7 @@ function ControlApi() {
       }
   
       const data: allProducts = await response.json();
-
-      console.log(data);
+      // console.log(data);
       
       setPaginationProducts(null)
       setAllProducts(data.data);
@@ -122,7 +122,7 @@ function ControlApi() {
 
       const arrayValue = Object.keys(valueInputs).map((key) => ({
         key: key as keyof ValueInputs,
-        value: valueInputs[key as keyof ValueInputs]
+        value: valueInputs[key as keyof ValueInputs]        
       }));
       
       // console.log(arrayValue);
@@ -134,22 +134,18 @@ function ControlApi() {
         }
       })
 
-      // params.length > 0 ? params.join("&") : params.join(" ");
       if (params.length > 0) {
         paramsMany = params.join("&")
       }else{
         paramsOne = params.join("")
       }
 
-      console.log(paramsOne);
-      console.log(paramsMany);
-      
+      // console.log(paramsOne);
+      // console.log(paramsMany);
 
       const response = await fetch(`http://localhost:3001/api/v1/product/filter/?${paramsOne ? paramsOne : paramsMany}`)
   
       const data: FilterProducts = await response.json();
-
-      // console.log(data);
       
       setPaginationProducts(null)
       setAllProducts(null)
@@ -158,10 +154,6 @@ function ControlApi() {
       console.error(error);
     }
   }
-
-  // console.log(filterProducts);
-  
-
 
   return (
     <header className="flex flex-col justify-center items-center  bg-[#e2e0e0]">
@@ -201,57 +193,7 @@ function ControlApi() {
 
       <section className="min-h-screen w-full flex flex-wrap justify-center items-start">
 
-      {paginationProducts ? paginationProducts?.results?.map((product, i) => (
-        <section key={product._id} className="w-[300px] h-[400px] flex flex-col justify-evenly items-start p-2 m-2 bg-redd-500">
-          <picture className="w-full h-[150px] flex justify-center items-center bg-blue-500">
-              <img className="w-[250px]" src="Image Not Found" alt="Image Not Found" ></img>
-          </picture>
-          <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
-
-          <p className="flex justify-start items-center text-xs font-light">M:{product.brand} | C:{product.category} | T:{product.type}</p>
-
-          <p className="text-sm font-light">{product.description}</p>
-
-          <span className="flex justify-start items-center text-xs font-light">{product.sizes.map((size) => (<p key={size} className="mx-1">{size}</p>))} | {product.available_colors.map((color) => (<p key={color} className="mx-1">{color}</p>))}</span>
-
-          <p className="font-medium text-xm">Price : {product.price} | Card {i+1}</p>
-        </section>
-      )):null}
-
-      {allProducts ? allProducts?.map((product, i) => (
-        <section key={product._id} className="w-[300px] h-[400px] flex flex-col justify-evenly items-start p-2 m-2 bg-redd-500">
-          <picture className="w-full h-[150px] flex justify-center items-center bg-blue-500">
-              <img className="w-[250px]" src="Image Not Found" alt="Image Not Found" ></img>
-          </picture>
-          <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
-
-          <p className="flex justify-start items-center text-xs font-light">M:{product.brand} | C:{product.category} | T:{product.type}</p>
-
-          <p className="text-sm font-light">{product.description}</p>
-
-          <span className="flex justify-start items-center text-xs font-light">{product.sizes.map((size) => (<p key={size} className="mx-1">{size}</p>))} | {product.available_colors.map((color) => (<p key={color} className="mx-1">{color}</p>))}</span>
-
-          <p className="font-medium text-xm">Price : {product.price} | Card {i+1}</p>
-        </section>
-      )):null}
-
-
-      {filterProducts?.results ? filterProducts.results?.map((product, i) => (
-        <section key={product._id} className="w-[300px] h-[400px] flex flex-col justify-evenly items-start p-2 m-2 bg-redd-500">
-          <picture className="w-full h-[150px] flex justify-center items-center bg-blue-500">
-              <img className="w-[250px]" src="Image Not Found" alt="Image Not Found" ></img>
-          </picture>
-          <h1 key={product._id} className="font-semibold text-xl">{product.name} | {product.stock}</h1>
-
-          <p className="flex justify-start items-center text-xs font-light">M:{product.brand} | C:{product.category} | T:{product.type}</p>
-
-          <p className="text-sm font-light">{product.description}</p>
-
-          <span className="flex justify-start items-center text-xs font-light">{product.sizes.map((size) => (<p key={size} className="mx-1">{size}</p>))} | {product.available_colors.map((color) => (<p key={color} className="mx-1">{color}</p>))}</span>
-
-          <p className="font-medium text-xm">Price : {product.price} | Card {i+1}</p>
-        </section>
-      )):null}
+      <Cards array={paginationProducts?.results || allProducts || filterProducts?.results || []} />
 
       </section>
     </header>
