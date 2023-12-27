@@ -4,6 +4,15 @@ import { paginationHandler } from "../handlers/paginationHandler";
 import { ProductsData } from "../interfaces/interfaces";
 // import allCreate from "../utils/productsData";
 
+export const apiBase = async (req:Request, res:Response) => {
+    try {
+        
+    res.status(200).json({products:"http://localhost:3001/api/v1/product"})
+    // res.status(200).json(result)
+    } catch (error) {
+    res.status(400).json({error:error})
+    }
+}
 
 export const allProducts = async (req:Request, res:Response) => {
     try {
