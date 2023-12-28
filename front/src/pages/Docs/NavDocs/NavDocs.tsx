@@ -1,9 +1,9 @@
 
 function NavDocs() {
   return (
-    <nav className="border-r border-neutral-500">
+    <nav className="border-r fixed top-0 left-0 border-neutral-500">
 
-      <ul className="w-[260px] h-screen p-7 bg-blude-500 space-y-10">
+      <ul className="w-[260px] h-screen px-7 pt-28 bg-blude-500 space-y-10">
 
         <li className="text-lg font-light flex flex-col justify-center items-start space-y-3">
           <h2 className="font-semibold text-xl">Introduccion</h2>

@@ -6,6 +6,12 @@
     .area {
         @apply max-w-screen-xl w-[95%] mx-auto overflow-hidden
     }
+    .code{
+        @apply w-full p-[25px] flex justify-start items-center bg-neutral-800
+    }
+    .corchete {
+        @apply block text-grayCode
+    }
 }
 
 body{
