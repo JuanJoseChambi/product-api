@@ -19,22 +19,10 @@ export const allProducts = async (req:Request, res:Response) => {
         const result = await ProductoApi.find({})
     const totalResults = result.length
     // allCreate()
-    res.status(200).json({TotalResults:totalResults, data: result})
+    res.status(200).json({TotalResults:totalResults, results: result})
     // res.status(200).json(result)
     } catch (error) {
     res.status(400).json({error:error})
-    }
-}
-
-export const idProduct = async (req:Request, res:Response) => {
-    try {
-        const {id} = req.params
-       
-        const result = await ProductoApi.findById(id)
-        
-        res.status(200).json({data: result})
-    } catch (error) {
-        res.status(400).json({error:error})
     }
 }
 
@@ -52,7 +40,7 @@ export const pageProducts = async (req:Request, res:Response) => {
 
         const totalResults = productsInPage.length;
 
-        const pages = Math.ceil(products.length / 10);
+        const pages = Math.ceil(products.length / 20);
 
         res.status(200).json(
             {info: {totalResults:totalResults ,
@@ -68,6 +56,18 @@ export const pageProducts = async (req:Request, res:Response) => {
 
     }
 }
+export const idProduct = async (req:Request, res:Response) => {
+    try {
+        const {id} = req.params
+       
+        const result = await ProductoApi.findById(id)
+        
+        res.status(200).json({results: result})
+    } catch (error) {
+        res.status(400).json({error:error})
+    }
+}
+
 
 export const filterProducts = async (req:Request, res:Response) => {
     try {
