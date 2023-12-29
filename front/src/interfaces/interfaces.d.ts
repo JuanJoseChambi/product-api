@@ -13,3 +13,16 @@ export interface Products {
     createdAt:Date;
     updatedAt:Date;
   }
+
+export interface EditProductState {
+    name?:string | null;
+    image?:string | null;
+    description?:string | null;
+    brand?:string | null;
+    price?:number | null;
+    category?:string | null;
+    type?:string | null;
+    stock?:number | null;
+    availeble_colors?:string[] | null;
+    sizes?:string[] | null
+}

@@ -1,7 +1,8 @@
 import { Request, Response } from "express"
 import ProductoApi from "../models/Productos";
 import { paginationHandler } from "../handlers/paginationHandler";
-import { ProductsData } from "../interfaces/interfaces";
+import { EditProduct, ProductsData } from "../interfaces/interfaces";
+import { editProductHandler } from "../handlers/editProductHandler";
 // import allCreate from "../utils/productsData";
 
 export const apiBase = async (req:Request, res:Response) => {
@@ -111,10 +112,10 @@ export const deleteProduct = async (req:Request, res:Response) => {
         const {id} = req.params
 
         const result = await ProductoApi.findByIdAndDelete(id)
-        if (result) {
-            res.status(200).json({successDelete: result})
-        }else{
+        if (!result) {
             res.status(200).json({successDelete: "Product No Exist"})
+        }else{
+            res.status(200).json({successDelete: result})
         }
     } catch (error) {
         res.status(404).json({error: error})
@@ -124,8 +125,20 @@ export const deleteProduct = async (req:Request, res:Response) => {
 export const editProduct = async (req:Request, res:Response) => {
    try {
     const {id} = req.params
-    const product = req.body;
-    const result = await ProductoApi.findByIdAndUpdate(id, product, {new:true})
+    const product: EditProduct = req.body;
+    if (!product.name && 
+        !product.image && 
+        !product.description && 
+        !product.brand && 
+        !product.price && 
+        !product.category && 
+        !product.type && 
+        !product.sizes && 
+        !product.stock && 
+        !product.availeble_colors ) {
+        return null
+    }
+    const result = await editProductHandler(id, product)
 
     res.status(200).json({successEdit: result})
    } catch (error) {

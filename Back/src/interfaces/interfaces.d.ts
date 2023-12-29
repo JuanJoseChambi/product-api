@@ -12,3 +12,16 @@ export interface ProductsData {
     createdAt:Date;
     updatedAt:Date;
 }
+
+export interface EditProduct {
+    name?:string;
+    image?:string;
+    description?:string;
+    brand?:string;
+    price?:number;
+    category?:string;
+    type?:string;
+    stock?:number | null;
+    availeble_colors?:string[];
+    sizes?:string[]
+}

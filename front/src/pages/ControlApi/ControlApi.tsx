@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Products } from "../../interfaces/interfaces"
+import { EditProductState, Products } from "../../interfaces/interfaces"
 import Cards from "../../components/Cards/Cards";
 
 interface PageInfo {
@@ -16,7 +16,7 @@ export interface PaginationProducts {
 }
 interface allProducts {
   TotalResults:number;
-  data:Products[]
+  results:Products[]
 }
 export interface FilterProducts {
   totalResults:number;
@@ -42,26 +42,22 @@ function ControlApi() {
     type:null,
     brand:null
   })
+  const [editProduct, setEditProduct] = useState<EditProductState>({
+    name:null,
+    image:null,
+    description:null,
+    brand:null,
+    price:null,
+    category:null,
+    type:null,
+    stock:null,
+    availeble_colors:null,
+    sizes:null
+  })
 
 
   useEffect(() => {
   
-    // async function productsData () {
-    //   await fetch("http://localhost:3001/api/v1/product/all")
-    //     .then(async (response) =>  {
-    //       if (!response.ok) {
-    //         throw new Error(`Error de red: ${response.status}`)
-    //       }
-    //       const data = await response.json()
-    //       console.log(data);
-          
-    //       setProducts(data.data)
-    //     })
-    //     .catch(err => console.log(err))
-    // }
-  
-    // productsData()
-
     async function productsData () {
       await fetch(`http://localhost:3001/api/v1/product/?page=1`)
         .then(async (response) =>  {
@@ -77,7 +73,6 @@ function ControlApi() {
     }
   
     productsData()
-    
   }, [])
 
   async function handlerPagination(url: string) {
@@ -103,10 +98,10 @@ function ControlApi() {
       }
   
       const data: allProducts = await response.json();
-      // console.log(data);
+      console.log(data);
       
       setPaginationProducts(null)
-      setAllProducts(data.data);
+      setAllProducts(data.results);
     } catch (error) {
       console.error(error);
     }
@@ -155,8 +150,42 @@ function ControlApi() {
     }
   }
 
+  async function  handlerEditProduct(id:string) {
+    const response = await fetch(`http://localhost:3001/api/v1/product/edit/${id}`,{
+      method:"PATCH",
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(editProduct)
+    })
+    if (!response.ok) {
+      throw new Error(`Error de red: ${response.status}`);
+    }
+    const result:Products = await  response.json() 
+    console.log(result);
+    handlerAllProducts()
+    setEditProduct({
+      name:null,
+      image:null,
+      description:null,
+      brand:null,
+      price:null,
+      category:null,
+      type:null,
+      stock:null,
+      availeble_colors:null,
+      sizes:null
+    })
+  }
+
+  async function handlerDeleteProduct(id:string) {
+    await fetch(`http://localhost:3001/api/v1/product/delete/${id}`,{
+      method:"DELETE"
+    })
+    handlerAllProducts()
+  }
   return (
-    <header className="flex flex-col justify-center items-center  bg-[#e2e0e0]">
+    <header className="flex flex-col justify-center items-center  bg-white">
 
       <section className="flex flex-col justify-center items-center space-y-5">
         <section className="flex justify-center items-center space-x-10">
@@ -193,7 +222,7 @@ function ControlApi() {
 
       <section className="min-h-screen w-full flex flex-wrap justify-center items-start">
 
-      <Cards array={paginationProducts?.results || allProducts || filterProducts?.results || []} />
+      <Cards setEditProduct={setEditProduct} state={editProduct} handlerEditProduct={handlerEditProduct} handlerDeleteProduct={handlerDeleteProduct} array={paginationProducts?.results || allProducts || filterProducts?.results || []} />
 
       </section>
     </header>
