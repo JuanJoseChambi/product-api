@@ -10,7 +10,7 @@ function Table({ header, body }: TableProp) {
       <thead>
         <tr className="w-full bg-redd-500 ">
             {header.map(text => (
-                <th className="pl-3 pr-10 py-4 text-xl font-medium border-b border-neutral-300">{text}</th>
+                <th className="pl-3 pr-10 py-4 text-xl font-medium border-b border-neutral-300 text-neutral-700">{text}</th>
             ))}
         </tr>
       </thead>

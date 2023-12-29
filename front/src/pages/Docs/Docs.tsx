@@ -3,7 +3,7 @@ import MainDocs from "./MainDocs/MainDocs"
 
 function Docs() {
   return (
-    <div className="flex justify-end items-center">
+    <div className="w-full bg-redd-500 flex justify-center mdl:justify-end items-start">
         <Header/>
         <MainDocs/>
     </div>

@@ -14,6 +14,10 @@ export default {
         "grayCode":"#abb2bf",
         "pinkCode":"#ff79c6",
         "orangeCode":"#f08d49",
+        "blueCode":"#66d9ef",
+      },
+      screens:{
+        "mdl":"1215px"
       }
     },
   },

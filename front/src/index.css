@@ -7,7 +7,10 @@
         @apply max-w-screen-xl w-[95%] mx-auto overflow-hidden
     }
     .code{
-        @apply w-full p-[25px] flex justify-start items-center bg-neutral-800
+        @apply w-full relative p-[25px] flex flex-wrap justify-start items-center rounded-md overflow-x-auto bg-neutral-800;
+        white-space: pre-wrap;
+        text-overflow: ellipsis;
+        
     }
     .corchete {
         @apply block text-grayCode
