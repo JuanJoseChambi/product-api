@@ -51,7 +51,7 @@ function MainDocs() {
 
           <li className="space-y-2 font-light">
             <h2 className="text-[25px] font-bold text-neutral-700">Buscar por ID</h2>
-            <p>Puede obtener un solo producto al agregar el ID como parámetro: <a className="border-b-2 border-violet-600" target="_blank" href="http://localhost:3001/api/v1/product/all">http://localhost:3001/api/v1/product/:id</a> </p>
+            <p>Puede obtener un solo producto al agregar el ID como parámetro: <a className="border-b-2 border-violet-600" target="_blank" href="http://localhost:3001/api/v1/product/6586177c054c7b7c9fee808d">http://localhost:3001/api/v1/product/:id</a> </p>
             <CodeTextRequest url="http://localhost:3001/api/v1/product/6586177c054c7b7c9fee808c" request="GET"/>
             <pre className="code">
               <code>

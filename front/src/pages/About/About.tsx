@@ -1,7 +1,7 @@
 
 function About() {
   return (
-    <main className="w-[90%] mx-auto h-[680px]">
+    <main className="w-[90%] mx-auto m-h-auto">
         <section className="space-y-10 py-10">
 
             <article className="space-y-3">
