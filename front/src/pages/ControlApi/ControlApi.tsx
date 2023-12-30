@@ -185,7 +185,7 @@ function ControlApi() {
     handlerAllProducts()
   }
   return (
-    <header className="flex flex-col justify-center items-center  bg-white">
+    <header className="flex flex-col justify-center items-center py-16 bg-white">
 
       <section className="flex flex-col justify-center items-center space-y-5">
         <section className="flex justify-center items-center space-x-10">
@@ -197,7 +197,7 @@ function ControlApi() {
         </section>
 
 
-        <section className="flex justify-center items-center space-x-5">
+        <section className="flex justify-center items-center space-x-5 ">
           <form className="w-[200px] bg-redd-500">
             <label>Filtrar por Nombre</label>
             <input type="text" onChange={(e) => setValueInputs({...valueInputs ,name: e.target.value})} placeholder="Producto" />
@@ -220,7 +220,7 @@ function ControlApi() {
 
       </section>
 
-      <section className="min-h-screen w-full flex flex-wrap justify-center items-start">
+      <section className="min-h-screen w-full flex flex-wrap justify-center items-start py-20">
 
       <Cards setEditProduct={setEditProduct} state={editProduct} handlerEditProduct={handlerEditProduct} handlerDeleteProduct={handlerDeleteProduct} array={paginationProducts?.results || allProducts || filterProducts?.results || []} />
 

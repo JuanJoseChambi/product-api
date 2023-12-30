@@ -42,7 +42,7 @@ function MainDocs() {
             <pre className="code">
               <code>
                 <span className="corchete">{'{'}</span>
-                <span className="text-pinkCode">"TotalResults": </span><span className="text-orangeCode">61,</span><br />
+                <span className="text-pinkCode">"TotalResults": </span><span className="text-orangeCode">60,</span><br />
                 <CodeTextResult obect={false}/>
                 <span className="corchete">{'}'}</span>
               </code>
