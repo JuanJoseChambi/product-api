@@ -11,7 +11,7 @@ function Footer() {
               <Link to={"/terms"}>
                 <li className="cursor-pointer">Terminos y servicios</li>
               </Link>
-                <li className="cursor-pointer">Soporte</li>
+                {/* <li className="cursor-pointer">Soporte</li> */}
 
             </ul>
         </section>

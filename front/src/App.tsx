@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import ControlApi from "./pages/ControlApi/ControlApi"
+// import ControlApi from "./pages/ControlApi/ControlApi"
 import LandingPage from "./pages/LandingPage/LandingPage"
 import Docs from "./pages/Docs/Docs"
 import Nav from "./components/Nav/Nav"
@@ -19,7 +19,7 @@ function App() {
         <Route path="/docs" element={<Docs/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/terms" element={<Terms/>}/>
-        <Route path="/control" element={<ControlApi/>}/>
+        {/* <Route path="/control" element={<ControlApi/>}/> */}
       </Routes>
 
       <Footer/>
@@ -28,3 +28,4 @@ function App() {
 }
 
 export default App
+

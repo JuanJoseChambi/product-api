@@ -2,7 +2,15 @@ import CodeTextRequest from "../../../components/CodeTextRequest/CodeTextRequest
 import CodeTextResult from "../../../components/CodeTextResult/CodeTextResult"
 import Table from "../../../components/Table/Table"
 
-function MainDocs() {
+interface MainDocsProps {
+  restRef:React.RefObject<HTMLDivElement>;
+  allRef:React.RefObject<HTMLDivElement>;
+  searchByIdRef:React.RefObject<HTMLDivElement>;
+  paginationRef:React.RefObject<HTMLDivElement>;
+  filterRef:React.RefObject<HTMLDivElement>;
+}
+
+function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDocsProps) {
   return (
     <main className="w-[95%] mdl:w-full min-h-screen bg-redd-500 py-10">
       <article className="w-full mdl:max-w-[960px] mx-auto bg-greend-500">
@@ -15,7 +23,7 @@ function MainDocs() {
           </li>
 
           <li className="space-y-2 font-light">
-            <h2 className="text-[25px] font-bold text-neutral-700">REST</h2>
+            <h2 className="text-[25px] font-bold text-neutral-700" ref={restRef}>REST</h2>
             <p> Url Base : <a className="border-b-2 border-violet-600" href="http://localhost:3001/api/v1" target="_blank">http://localhost:3001/api/v1</a>
             </p>
             <p>La URL Base proporciona detalles sobre todos los recursos disponibles en la API. Cada solicitud, sin excepción, pasa a través de este punto de entrada. Todas las respuestas proporcionarán datos en el formato JSON a través del método GET </p>
@@ -34,7 +42,7 @@ function MainDocs() {
           </li>
 
           <li className="space-y-2 font-light">
-            <h2 className="text-[25px] font-bold text-neutral-700">Todos los productos</h2>
+            <h2 className="text-[25px] font-bold text-neutral-700" ref={allRef}>Todos los productos</h2>
             <p>La obtencion de todos los productos de la api es en la ruta: <a className="border-b-2 border-violet-600" target="_blank" href="http://localhost:3001/api/v1/product/all">http://localhost:3001/api/v1/product/all</a></p>
 
             <CodeTextRequest url="http://localhost:3001/api/v1/product/all" request="GET"/>
@@ -50,7 +58,7 @@ function MainDocs() {
           </li>
 
           <li className="space-y-2 font-light">
-            <h2 className="text-[25px] font-bold text-neutral-700">Buscar por ID</h2>
+            <h2 className="text-[25px] font-bold text-neutral-700" ref={searchByIdRef}>Buscar por ID</h2>
             <p>Puede obtener un solo producto al agregar el ID como parámetro: <a className="border-b-2 border-violet-600" target="_blank" href="http://localhost:3001/api/v1/product/6586177c054c7b7c9fee808d">http://localhost:3001/api/v1/product/:id</a> </p>
             <CodeTextRequest url="http://localhost:3001/api/v1/product/6586177c054c7b7c9fee808c" request="GET"/>
             <pre className="code">
@@ -63,7 +71,7 @@ function MainDocs() {
           </li>
 
           <li className="space-y-2 font-light">
-            <h2 className="text-[25px] font-bold text-neutral-700">Paginacion</h2>
+            <h2 className="text-[25px] font-bold text-neutral-700" ref={paginationRef}>Paginacion</h2>
             <p>La api viene con uan paginacion de todos los productos en el cual estan paginados hasta 20 productos por paginacion, y en la respuesta de la peticion viene un objeto info el cual cuenta con la siguiente informacion:</p>
             <Table 
               header={["Clave","Tipo","Descripcion"]} 
@@ -92,7 +100,7 @@ function MainDocs() {
           </li>
 
           <li className="space-y-2 font-light">
-            <h2 className="text-[25px] font-bold text-neutral-700">Filtrar Productos</h2>
+            <h2 className="text-[25px] font-bold text-neutral-700" ref={filterRef}>Filtrar Productos</h2>
             <p>Puede también aplicar filtros a la URL mediante la incorporación de parámetros de consulta adicionales. Para iniciar la filtración, simplemente añada un después del signo de interrogación (?). En caso de que desee concatenar múltiples filtros en una misma solicitud, utilice (&) después de cada consulta.</p>
 
 
