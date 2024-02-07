@@ -106,7 +106,7 @@ function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDoc
             ]}/>
 
             <p>Por ejemplo si se quiere buscar por nombre y marca se haria de la siguiente manera para filtrar solo las remeras de adidas:</p>
-            <CodeTextRequest request="GET" url="http://localhost:3001/api/v1/product/filter/?name=camiseta&brand=adidas"/>
+            <CodeTextRequest request="GET" url="http://localhost:3001/api/v1/product/filter/?name=camiseta&type=ropa"/>
             <pre className="code">
               <code>
                 <span className="corchete">{'{'}</span>

@@ -12,7 +12,7 @@ function Header() {
         </article>
         <h1 className="font-light pb-20 md:pb-20 pt-10"> Conéctate, Aprende, Practica</h1>
         <Link to={"/docs"}>
-          <button className="bg-white text-black py-2 px-4 rounded-2xl font-light border-2 border-primaryColorViolet shadow-lg shadow-neutral-400">ir a Documentacion</button>
+          <button className="bg-white text-black mb-16 py-2 px-4 rounded-2xl font-light border-2 border-primaryColorViolet shadow-lg shadow-neutral-400">ir a Documentacion</button>
         </Link>
         
       </section>

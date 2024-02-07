@@ -18,11 +18,6 @@ function About() {
                 <h2 className="font-bold text-xl tracking-wider text-neutral-700">¿Cuáles son las características clave de esta API?</h2>
                 <p className="font-light text-sm">Ofrezco funcionalidades como la obtención de información detallada de productos, filtrado por categorías, paginacion, entre otras, pero como se creo a modo de practica no esta completo pero funciona para la practica como ya se menciono antes.</p>
             </article>
-
-            <article className="space-y-3">
-                <h2 className="font-bold text-xl tracking-wider text-neutral-700">¿Es gratuita la API?</h2>
-                <p className="font-light text-sm">Sí, actualmente la API es gratuita para su uso. Sin embargo, debes revisar los términos y condiciones para obtener información actualizada.</p>
-            </article>
         
             <article className="space-y-3">
                 <h2 className="font-bold text-xl tracking-wider text-neutral-700">¿Derechos de Autor?</h2>
