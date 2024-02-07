@@ -6,9 +6,9 @@ interface TableProp {
 
 function Table({ header, body }: TableProp) {
   return (
-    <table className="w-full bg-neutrald-600">
+    <table className="w-full">
       <thead>
-        <tr className="w-full bg-redd-500 ">
+        <tr className="w-full">
             {header.map(text => (
                 <th className="pl-3 pr-10 py-4 text-xl font-medium border-b border-neutral-300 text-neutral-700">{text}</th>
             ))}

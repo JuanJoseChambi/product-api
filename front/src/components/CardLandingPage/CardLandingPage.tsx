@@ -6,7 +6,7 @@ interface CardLandingPageProp {
 
 function CardLandingPage({product}:CardLandingPageProp) {
   return (
-    <article className="max-h-[350px] px-4 py-2 basis-[300px] my-10 mx-[2px] relative flex flex-col justify-start items-center shadow-[0px_15px_30px_0px_#A6A6A6] bg-white">
+    <article className="min-h-[350px] max-h-[350px] px-4 py-4 basis-[300px] my-10 mx-[2px] relative flex flex-col justify-evenly items-center shadow-[0px_15px_30px_0px_#D7D7D7] bg-white">
 
         {/* <article className="w-[30px] h-[70px] rounded-[0px_0px_15px_15px] absolute top-0 right-3 bg-violet-500 "></article> */}
         

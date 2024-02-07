@@ -5,7 +5,7 @@ function Footer() {
     <footer className="w-[90%] mx-auto border-t border-neutral-500 bg-redd-500">
         <section className="flex flex-col md:flex-row justify-between items-center space-y-5 md:space-y-0 py-10">
             <section className="w-full md:w-[50%] font-medium text-sm text-start ">
-                <p className="">¡Descubre y practica con nuestra plataforma para desarrolladores! Accede a nuestra API sencilla de código abierto para propósitos educativos</p>
+                <p className="">¡Descubre y practica con PA nuestra plataforma para desarrolladores! Accede a nuestra API sencilla de código abierto para propósitos educativos</p>
             </section>
             <ul className="flex justify-center items-center font-light space-x-5 text-sm">
               <Link to={"/terms"}>

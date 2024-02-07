@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import CardLandingPage from "../../../components/CardLandingPage/CardLandingPage"
-import { Products } from "../../../interfaces/interfaces";
 
 function Main() {
 
@@ -15,9 +14,9 @@ function Main() {
   
       const data = await response.json();
 
-      const fiveProduct = data.results.slice(0,9)
+      const nineProduct = data.results.slice(0,9)
       
-      setProducts(fiveProduct)
+      setProducts(nineProduct)
     } catch (error) {
       console.error(error);
     }
@@ -26,17 +25,16 @@ function Main() {
   useEffect(() => {
     
     handlerInfoCards()
+    
   }, [])
   
-  console.log(products);
-
-
+  // console.log(products);
   return (
-    <main className="">
+    <main>
         <section className="w-[90%] mx-auto flex flex-wrap justify-evenly items-center pb-20 bg-redd-500">
 
-            {products.map(product => (
-              <CardLandingPage product={product}/>
+            {products.map((product, i) => (
+              <CardLandingPage key={i} product={product} />
             ))}
             
 
