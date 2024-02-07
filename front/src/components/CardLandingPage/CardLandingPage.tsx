@@ -21,7 +21,7 @@ function CardLandingPage({product}:CardLandingPageProp) {
         <h3 className="w-full text-sm font-medium py-3">Precio: {product.price} $</h3>
         <section className="w-full bg-redd-500 flex justify-start items-center">
             <i className='text-xl pr-2 bx bx-cart-add'></i>
-            <button className="flex justify-around items-center bg-[#AA3EFF] text-xs py-2 px-3 rounded-[0px_8px_8px_0px] text-white font-light">Agregar al Carrito</button>
+            <button className="flex justify-around items-center bg-primaryColorViolet text-xs py-2 px-3 rounded-[0px_8px_8px_0px] text-white font-light">Agregar al Carrito</button>
         </section>
 
     </article>

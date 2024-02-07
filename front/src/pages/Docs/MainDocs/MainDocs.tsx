@@ -24,7 +24,7 @@ function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDoc
           </LiSectionsDocs>
 
           <LiSectionsDocs refSection={restRef} title="REST">
-            <p> Url Base : <a className="border-b-2 border-violet-600" href="http://localhost:3001/api/v1" target="_blank">http://localhost:3001/api/v1</a></p>
+            <p> Url Base : <a className="border-b-2 border-primaryColorViolet" href="http://localhost:3001/api/v1" target="_blank">http://localhost:3001/api/v1</a></p>
             <p>La URL Base proporciona detalles sobre todos los recursos disponibles en la API. Cada solicitud, sin excepción, pasa a través de este punto de entrada. Todas las respuestas proporcionarán datos en el formato JSON a través del método GET </p>
             
             <CodeTextRequest url="http://localhost:3001/api/v1" request="GET"/>
@@ -41,10 +41,8 @@ function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDoc
           </LiSectionsDocs>
 
           <LiSectionsDocs refSection={allRef} title="Todos los productos">
-          <p>La obtencion de todos los productos de la api es en la ruta: <a className="border-b-2 border-violet-600" target="_blank" href="http://localhost:3001/api/v1/product/all">http://localhost:3001/api/v1/product/all</a></p>
-
+          <p>La obtencion de todos los productos de la api es en la ruta: <a className="border-b-2 border-primaryColorViolet" target="_blank" href="http://localhost:3001/api/v1/product/all">http://localhost:3001/api/v1/product/all</a></p>
           <CodeTextRequest url="http://localhost:3001/api/v1/product/all" request="GET"/>
-
           <pre className="code">
             <code>
               <span className="corchete">{'{'}</span>
@@ -56,7 +54,7 @@ function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDoc
           </LiSectionsDocs>
 
           <LiSectionsDocs refSection={searchByIdRef} title="Buscar por Id">
-            <p>Puede obtener un solo producto al agregar el ID como parámetro: <a className="border-b-2 border-violet-600" target="_blank" href="http://localhost:3001/api/v1/product/6586177c054c7b7c9fee808d">http://localhost:3001/api/v1/product/:id</a> </p>
+            <p>Puede obtener un solo producto al agregar el ID como parámetro: <a className="border-b-2 border-primaryColorViolet" target="_blank" href="http://localhost:3001/api/v1/product/6586177c054c7b7c9fee808d">http://localhost:3001/api/v1/product/:id</a> </p>
             <CodeTextRequest url="http://localhost:3001/api/v1/product/6586177c054c7b7c9fee808c" request="GET"/>
             <pre className="code">
               <code>

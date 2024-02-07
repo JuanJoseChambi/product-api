@@ -12,7 +12,7 @@ interface CodeTextResultProp {
     stock?:string;
 }
 
-function CodeTextResult({obect, custom, id, name, image, description, brand, price, category, type, stock}:CodeTextResultProp) {
+function CodeTextResult({obect, custom, id, name, image, description, price, category, type, stock}:CodeTextResultProp) {
   return (
     <> 
             <span className="text-pinkCode">"results":</span><span className="text-grayCode"> {obect ? `{` : '['}</span><br />
@@ -22,7 +22,7 @@ function CodeTextResult({obect, custom, id, name, image, description, brand, pri
             <span className="text-pinkCode">    "name": </span><span className="text-greenCode">"{custom? name : "Zapatillas Deportivas Nike Air Max"}",</span><br />
             <span className="text-pinkCode">    "image": </span><span className="text-greenCode">"{custom? `https://example.com/${image}.jpg` :"https://example.com/zapatillas.jpg"}",</span><br />
             <span className="text-pinkCode">    "description": </span><span className="text-greenCode">"{custom?description :`Zapatillas deportivas de alta gama con tecnología Air Max para una máxima \n    comodidad y rendimiento.`}",</span><br />
-            <span className="text-pinkCode">    "brand": </span><span className="text-greenCode">"{custom? brand: "Nike"}",</span><br />
+            {/* <span className="text-pinkCode">    "brand": </span><span className="text-greenCode">"{custom? brand: "Nike"}",</span><br /> */}
             <span className="text-pinkCode">    "price": </span><span className="text-orangeCode">{custom? price: "129.99"},</span><br />
             <span className="text-pinkCode">    "category": </span><span className="text-greenCode">"{custom?category:"Calzado Deportivo"}",</span><br />
             <span className="text-pinkCode">    "type": </span><span className="text-greenCode">"{custom?type:"Ropa"}",</span><br />
