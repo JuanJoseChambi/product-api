@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react"
 import CardLandingPage from "../../../components/CardLandingPage/CardLandingPage"
+
 const {VITE_SRV} = import.meta.env
+
 function Main() {
 
   const [products,setProducts] = useState([])
+
+  // useEffect(() => {
+  //   console.log(VITE_SRV);
+    
+  // }, [])
 
   async function handlerInfoCards() {
     try {

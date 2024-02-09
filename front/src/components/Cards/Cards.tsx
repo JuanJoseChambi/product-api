@@ -34,7 +34,10 @@ function Cards({array, state, setEditProduct, handlerEditProduct, handlerDeleteP
     const responseData = await response.json();
     setEditProduct({ ...state, image: responseData.secure_url });
   }
-
+  // useEffect(() => {
+  //   console.log(VITE_PRESET_KEY);
+    
+  // },[])
 
   return (
     <>
