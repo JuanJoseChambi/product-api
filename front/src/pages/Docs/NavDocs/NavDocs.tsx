@@ -32,13 +32,13 @@ function NavDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:NavDocsP
           <h2 className="font-semibold text-xl">Productos</h2>
 
           {[{text:"Todos",ref:allRef},{text:"Buscar ID",ref:searchByIdRef}, {text:"Paginacion",ref:paginationRef}, {text:"Filtrar Productos",ref:filterRef}].map((option, i) => (
-            <>
+            <div key={i}>
               <a href="#" onClick={(e) => scrollToSection(option.ref, e)} onMouseEnter={() => setHoverOption(i+1)} onMouseLeave={() => setHoverOption(null)}>
                 {option.text}
               <div className={`${hoverOption === i+1 ? "w-full" : "w-0"} h-[2px] bg-primaryColorViolet transition-[width] duration-500`}></div>
               </a>
               
-            </>
+            </div>
           ))}
 
         </li>

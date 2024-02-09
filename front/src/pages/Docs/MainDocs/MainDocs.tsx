@@ -2,7 +2,7 @@ import CodeTextRequest from "../../../components/CodeTextRequest/CodeTextRequest
 import CodeTextResult from "../../../components/CodeTextResult/CodeTextResult"
 import LiSectionsDocs from "../../../components/LiSectionsDocs/LiSectionsDocs";
 import Table from "../../../components/Table/Table"
-
+const {VITE_SRV} = import.meta.env;
 interface MainDocsProps {
   restRef:React.RefObject<HTMLDivElement>;
   allRef:React.RefObject<HTMLDivElement>;
@@ -24,25 +24,27 @@ function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDoc
           </LiSectionsDocs>
 
           <LiSectionsDocs refSection={restRef} title="REST">
-            <p> Url Base : <a className="border-b-2 border-primaryColorViolet" href="http://localhost:3001/api/v1" target="_blank">http://localhost:3001/api/v1</a></p>
+            <p> Url Base : <a className="border-b-2 border-primaryColorViolet" href={`${VITE_SRV}`} target="_blank">{VITE_SRV}</a></p>
             <p>La URL Base proporciona detalles sobre todos los recursos disponibles en la API. Cada solicitud, sin excepción, pasa a través de este punto de entrada. Todas las respuestas proporcionarán datos en el formato JSON a través del método GET </p>
             
-            <CodeTextRequest url="http://localhost:3001/api/v1" request="GET"/>
+            <CodeTextRequest url={`${VITE_SRV}`} request="GET"/>
 
             <pre className="code">
               <code>
                 <span className="corchete">{'{'}</span>
-                <span className="text-pinkCode">  "products":</span><span className="text-greenCode">"http://localhost:3001/api/v1/product"</span>
+                <span className="text-pinkCode">  "products":</span><span className="text-greenCode">{VITE_SRV}/product"</span>
                 <span className="corchete">{'}'}</span>
               </code>
             </pre>
             <p>Actualmente estos son los recursos disponibles:</p>
-            <li className="list-disc ml-5">Products: Este recurso se utiliza para recuperar información sobre todos los productos</li>
+            <ul >
+              <li className="list-disc ml-5">Products: Este recurso se utiliza para recuperar información sobre todos los productos</li>
+            </ul>
           </LiSectionsDocs>
 
           <LiSectionsDocs refSection={allRef} title="Todos los productos">
-          <p>La obtencion de todos los productos de la api es en la ruta: <a className="border-b-2 border-primaryColorViolet" target="_blank" href="http://localhost:3001/api/v1/product/all">http://localhost:3001/api/v1/product/all</a></p>
-          <CodeTextRequest url="http://localhost:3001/api/v1/product/all" request="GET"/>
+          <p>La obtencion de todos los productos de la api es en la ruta: <a className="border-b-2 border-primaryColorViolet" target="_blank" href={`${VITE_SRV}/product/all`}>{VITE_SRV}/product/all</a></p>
+          <CodeTextRequest url={`${VITE_SRV}/product/all`} request="GET"/>
           <pre className="code">
             <code>
               <span className="corchete">{'{'}</span>
@@ -54,8 +56,8 @@ function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDoc
           </LiSectionsDocs>
 
           <LiSectionsDocs refSection={searchByIdRef} title="Buscar por Id">
-            <p>Puede obtener un solo producto al agregar el ID como parámetro: <a className="border-b-2 border-primaryColorViolet" target="_blank" href="http://localhost:3001/api/v1/product/6586177c054c7b7c9fee808d">http://localhost:3001/api/v1/product/:id</a> </p>
-            <CodeTextRequest url="http://localhost:3001/api/v1/product/6586177c054c7b7c9fee808c" request="GET"/>
+            <p>Puede obtener un solo producto al agregar el ID como parámetro: <a className="border-b-2 border-primaryColorViolet" target="_blank" href={`${VITE_SRV}/product/6586177c054c7b7c9fee808d`}>{VITE_SRV}/product/:id</a> </p>
+            <CodeTextRequest url={`${VITE_SRV}/product/6586177c054c7b7c9fee808c`} request="GET"/>
             <pre className="code">
               <code>
                 <span className="corchete">{'{'}</span>
@@ -76,7 +78,7 @@ function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDoc
                 ["nextPage","String","Muestra la url de la siguiente paginacion y cuando no exista mas este es null"],
                 ["prevPage","String","Muestra la url de la anterior paginacion y cuando no exista mas este es null"],
                 ]}/>
-              <CodeTextRequest url="http://localhost:3001/api/v1/product/?page=1" request="GET"/>
+              <CodeTextRequest url={`${VITE_SRV}/product/?page=1`} request="GET"/>
               <pre className="code">
               <code>
                 <span className="corchete">{'{'}</span>
@@ -84,7 +86,7 @@ function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDoc
                   <span className="text-pinkCode">   "totalResults":</span><span className="text-greenCode">20,</span><br />
                   <span className="text-pinkCode">   "pages":</span><span className="text-greenCode">4,</span><br />
                   <span className="text-pinkCode">   "currentPage":</span><span className="text-greenCode">1,</span><br />
-                  <span className="text-pinkCode">   "nextPage":</span><span className="text-orangeCode">"http://localhost:3001/api/v1/product/?page=2",</span><br />
+                  <span className="text-pinkCode">   "nextPage":</span><span className="text-orangeCode">"{VITE_SRV}/product/?page=2",</span><br />
                   <span className="text-pinkCode">   "TotalResults":</span><span className="text-blueCode">null</span><br />
                   <span className="text-grayCode">  {`}`},</span><br />
                   <CodeTextResult/>
@@ -106,7 +108,7 @@ function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDoc
             ]}/>
 
             <p>Por ejemplo si se quiere buscar por nombre y marca se haria de la siguiente manera para filtrar solo las remeras de adidas:</p>
-            <CodeTextRequest request="GET" url="http://localhost:3001/api/v1/product/filter/?name=camiseta&type=ropa"/>
+            <CodeTextRequest request="GET" url={`${VITE_SRV}/product/filter/?name=camiseta&type=ropa`}/>
             <pre className="code">
               <code>
                 <span className="corchete">{'{'}</span>
