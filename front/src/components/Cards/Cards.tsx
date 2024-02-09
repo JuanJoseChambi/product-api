@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { EditProductState, Products } from "../../interfaces/interfaces"
+const {VITE_PRESET_KEY, VITE_CLOUD_NAME} = import.meta.env
 
 interface ArrayMap {
     array: Products[];
@@ -13,9 +14,7 @@ function Cards({array, state, setEditProduct, handlerEditProduct, handlerDeleteP
 
   const [edit, setEdit] = useState<string | null>(null)
 
-  const preset_key = "ProductApi";
-  const cloud_name = "dth62bdky";
-  const URL = `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`;
+  const URL = `https://api.cloudinary.com/v1_1/${VITE_CLOUD_NAME}/image/upload`;
 
   async function handlerUploadImage (e:React.ChangeEvent<HTMLInputElement>) {
     if (!e.target.files) return null;
@@ -23,7 +22,7 @@ function Cards({array, state, setEditProduct, handlerEditProduct, handlerDeleteP
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", preset_key);
+    formData.append("upload_preset", VITE_PRESET_KEY);
     const response = await fetch(URL, {
       method:"POST",
       body:formData
