@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import CardLandingPage from "../../../components/CardLandingPage/CardLandingPage"
-
+const {VITE_SRV} = import.meta.env
 function Main() {
 
   const [products,setProducts] = useState([])
 
   async function handlerInfoCards() {
     try {
-      const response = await fetch("http://localhost:3001/api/v1/product/all");
+      const response = await fetch(`${VITE_SRV}/product/all`);
       if (!response.ok) {
         throw new Error(`Error de red: ${response.status}`);
       }

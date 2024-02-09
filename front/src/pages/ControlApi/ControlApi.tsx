@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { EditProductState, Products } from "../../interfaces/interfaces"
 import Cards from "../../components/Cards/Cards";
-
+const {VITE_SRV} = import.meta.env
 interface PageInfo {
   totalResults: number;
   pages: number;
@@ -59,7 +59,7 @@ function ControlApi() {
   useEffect(() => {
   
     async function productsData () {
-      await fetch(`http://localhost:3001/api/v1/product/?page=1`)
+      await fetch(`${VITE_SRV}/product/?page=1`)
         .then(async (response) =>  {
           if (!response.ok) {
             throw new Error(`Error de red: ${response.status}`)
@@ -92,7 +92,7 @@ function ControlApi() {
 
   async function handlerAllProducts() {
     try {
-      const response = await fetch("http://localhost:3001/api/v1/product/all");
+      const response = await fetch(`${VITE_SRV}/product/all`);
       if (!response.ok) {
         throw new Error(`Error de red: ${response.status}`);
       }
@@ -138,7 +138,7 @@ function ControlApi() {
       // console.log(paramsOne);
       // console.log(paramsMany);
 
-      const response = await fetch(`http://localhost:3001/api/v1/product/filter/?${paramsOne ? paramsOne : paramsMany}`)
+      const response = await fetch(`${VITE_SRV}/product/filter/?${paramsOne ? paramsOne : paramsMany}`)
   
       const data: FilterProducts = await response.json();
       
@@ -151,7 +151,7 @@ function ControlApi() {
   }
 
   async function  handlerEditProduct(id:string) {
-    const response = await fetch(`http://localhost:3001/api/v1/product/edit/${id}`,{
+    const response = await fetch(`${VITE_SRV}/product/edit/${id}`,{
       method:"PATCH",
       headers:{
         'Content-Type':'application/json'
@@ -179,7 +179,7 @@ function ControlApi() {
   }
 
   async function handlerDeleteProduct(id:string) {
-    await fetch(`http://localhost:3001/api/v1/product/delete/${id}`,{
+    await fetch(`${VITE_SRV}/product/delete/${id}`,{
       method:"DELETE"
     })
     handlerAllProducts()
@@ -189,7 +189,7 @@ function ControlApi() {
 
       <section className="flex flex-col justify-center items-center space-y-5">
         <section className="flex justify-center items-center space-x-10">
-          <button onClick={() => handlerPagination("http://localhost:3001/api/v1/product/?page=1")}>Paginacion de Productos</button>
+          <button onClick={() => handlerPagination("${VITE_SRV}/product/?page=1")}>Paginacion de Productos</button>
           <button onClick={() => handlerPagination(paginationProducts?.info.prevPage ?? "")} className="">Anterior</button>
           <h1 className="text-xl font-semibold">{paginationProducts?.info.currentPage}</h1>
           <button onClick={() => handlerPagination(paginationProducts?.info.nextPage ?? "")} className="">Siguiente</button>
