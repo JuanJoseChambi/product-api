@@ -13,7 +13,7 @@ function Loading({fadeSwitch, timeFade = 500, text = "Cargando"}:LoadingProp) {
         if (fadeSwitch) {
           const timeoutId = setTimeout(() => {
             if (LoadingRef.current) {
-              LoadingRef.current.classList.add("hidden");
+              LoadingRef.current.classList.add("opacity-0", "hidden");
             }
           }, timeFade);
     
@@ -22,13 +22,13 @@ function Loading({fadeSwitch, timeFade = 500, text = "Cargando"}:LoadingProp) {
           };
         } else {
           if (LoadingRef.current) {
-            LoadingRef.current.classList.remove("hidden");
+            LoadingRef.current.classList.remove("opacity-0", "hidden");
           }
         }
-      }, []);
+      }, [fadeSwitch]);
 
   return (
-    <div className={`fixed flex justify-center items-center top-0 w-full h-screen bg-[#fdfdfd] ${fadeSwitch ? `opacity-0 overflow-y-visible` : "opacity-100 overflow-hidden"} transition-[transform_opacity_display] duration-700`} ref={LoadingRef}>
+    <div className={`fixed flex justify-center items-center top-0 w-full h-screen bg-[#fdfdfd]  ${fadeSwitch ? `opacity-0 overflow-y-visible` : "opacity-100 overflow-hidden"} transition-[transform_opacity_display] duration-700`} ref={LoadingRef}>
         <h3>{text}</h3>
     </div>
   )
