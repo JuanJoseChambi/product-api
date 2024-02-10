@@ -5,7 +5,7 @@ import Nav from "./components/Nav/Nav"
 import Footer from "./pages/LandingPage/Footer/Footer"
 import About from "./pages/About/About"
 import Terms from "./pages/Terms/Terms"
-import ControlApi from "./pages/ControlApi/ControlApi"
+// import ControlApi from "./pages/ControlApi/ControlApi"
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
         <Route path="/docs" element={<Docs/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/terms" element={<Terms/>}/>
-        <Route path="/control" element={<ControlApi/>}/>
+        {/* <Route path="/control" element={<ControlApi/>}/> */}
       </Routes>
 
       <Footer/>

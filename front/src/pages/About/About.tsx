@@ -38,6 +38,14 @@ function About() {
                     <h2 className="font-bold text-xl tracking-wider text-neutral-700">¿Derechos de Autor?</h2>
                     <p className="font-light text-sm">Product API se ha creado con fines educativos y prácticos, permitiendo un uso libre. Los datos e imágenes no tienen derechos de propiedad y pertenecen a sus respectivos propietarios.</p>
                 </article>
+
+                {/* <div className="w-full h-[30px] flex flex-col justify-center space-x-5 items-center bg-redd-500">
+                    <p className="font-bold text-xl tracking-wider text-neutral-700">Buscame en :</p>
+                    <div>
+                        <i className='text-3xl bx bxl-github'></i> <i className='text-3xl bx bxl-linkedin-square' ></i>
+                    </div>
+                </div> */}
+
             </section>
         </main>
         <Loading fadeSwitch={loaderTime} timeFade={300}/>  

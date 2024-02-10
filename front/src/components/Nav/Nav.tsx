@@ -10,7 +10,7 @@ function Nav() {
   return (
     <nav className="w-[90%] h-[70px] mx-auto flex justify-between  border-b border-neutral-500 items-center bg-greend-500">
         <Link to={"/"}>
-            <h2 className="cursor-pointer textDegrade font-semibold text-3xl">PA</h2>
+            <h2 className="cursor-pointer textDegrade font-semibold text-3xl drop-shadow-[3px_3px_2.5px_gray]">PA</h2>
         </Link>
         <ul className="flex justify-center items-center space-x-10">
             {homeButton ? 

@@ -11,7 +11,7 @@ function Footer() {
             </section>
             <ul className="flex justify-center items-center font-light space-x-5 text-sm">
               <Link to={"/"}>
-                <li className="cursor-pointer textDegrade font-semibold text-3xl">PA</li>
+                <li className="cursor-pointer textDegrade font-semibold text-3xl drop-shadow-[3px_3px_2.5px_gray]">PA</li>
               </Link>
 
             </ul>
