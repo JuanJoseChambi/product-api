@@ -12,6 +12,7 @@ interface MainDocsProps {
 }
 
 function MainDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:MainDocsProps) {
+  
   return (
     <main className="w-[95%] mdl:w-full min-h-screen bg-redd-500 py-10">
       <article className="w-full mdl:max-w-[960px] mx-auto bg-greend-500">

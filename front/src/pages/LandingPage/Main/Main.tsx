@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react"
 import CardLandingPage from "../../../components/CardLandingPage/CardLandingPage"
+import Loading from "../../../components/Loading/Loading";
 
 const {VITE_SRV} = import.meta.env
 
 function Main() {
 
   const [products,setProducts] = useState([])
-
-  // useEffect(() => {
-  //   console.log(VITE_SRV);
-    
-  // }, [])
 
   async function handlerInfoCards() {
     try {
@@ -30,19 +26,20 @@ function Main() {
   }
   
   useEffect(() => {
-    
     handlerInfoCards()
     
   }, [])
   
-  // console.log(products);
   return (
     <main>
         <section className="w-[90%] mx-auto flex flex-wrap justify-evenly items-center pb-20 bg-redd-500">
 
             {products.map((product, i) => (
               <CardLandingPage key={i} product={product} />
-            ))}
+            )) 
+            }
+            <Loading fadeSwitch={products.length} />
+
             
 
         </section>
