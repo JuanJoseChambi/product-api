@@ -1,3 +1,5 @@
+// import { Link } from "react-router-dom"
+
 import { Link } from "react-router-dom"
 
 function Footer() {
@@ -8,10 +10,9 @@ function Footer() {
                 <p className="">¡Descubre y practica con PA nuestra plataforma para desarrolladores! Accede a nuestra API sencilla de código abierto para propósitos educativos</p>
             </section>
             <ul className="flex justify-center items-center font-light space-x-5 text-sm">
-              <Link to={"/terms"}>
-                <li className="cursor-pointer">Terminos y servicios</li>
+              <Link to={"/"}>
+                <li className="cursor-pointer textDegrade font-semibold text-3xl">PA</li>
               </Link>
-                {/* <li className="cursor-pointer">Soporte</li> */}
 
             </ul>
         </section>

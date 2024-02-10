@@ -10,11 +10,19 @@
         @apply w-full relative p-[25px] flex flex-wrap justify-start items-center rounded-md overflow-x-auto bg-neutral-800;
         white-space: pre-wrap;
         text-overflow: ellipsis;
-        
     }
     .corchete {
         @apply block text-grayCode
     }
+    .textDegrade {
+        background-image: -moz-linear-gradient(left, black, #AA3EFF); /* Firefox */
+        background-image: -o-linear-gradient(left, black,#AA3EFF); /* Opera */
+        background-image: linear-gradient(to left, black, #AA3EFF); /* Estándar */
+        background-image: -webkit-linear-gradient(top,black,#AA3EFF
+        ); /* Safari y Chrome */
+        -webkit-background-clip: text;
+        color: transparent;
+      }
 }
 
 body{

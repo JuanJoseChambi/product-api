@@ -12,7 +12,6 @@ function Docs() {
   const filterRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Después de 300 ms, cambia loaderTime a false
     const timeoutId = setTimeout(() => {
       setLoaderTime(true);
     }, 300);
