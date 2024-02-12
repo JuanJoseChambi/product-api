@@ -1,4 +1,5 @@
 // import { Link } from "react-router-dom"
+import PALogo from "../../../assets/PALogo.png"
 
 import { Link } from "react-router-dom"
 
@@ -11,7 +12,12 @@ function Footer() {
             </section>
             <ul className="flex justify-center items-center font-light space-x-5 text-sm">
               <Link to={"/"}>
-                <li className="cursor-pointer textDegrade font-semibold text-3xl drop-shadow-[3px_3px_2.5px_gray]">PA</li>
+
+              <picture className="w-[80px] h-[80px] flex justify-center items-center bg-redd-500 pointer-events-none select-none">
+                <img src={PALogo} alt="PA" className="pointer-events-none select-none"/>
+              </picture>
+
+                {/* <li className="cursor-pointer textDegrade font-semibold text-3xl drop-shadow-[3px_3px_2.5px_gray]">PA</li> */}
               </Link>
 
             </ul>
