@@ -10,7 +10,7 @@ interface NavDocsProps {
 
 
 function NavDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:NavDocsProps) {
-  const [hoverOption, setHoverOption] = useState<number | null>()
+  const [hoverOption, setHoverOption] = useState<string | null>()
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>, e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     if (ref.current) {
@@ -25,17 +25,19 @@ function NavDocs({restRef,allRef,searchByIdRef,paginationRef,filterRef}:NavDocsP
 
         <li className="text-lg font-light flex flex-col justify-center items-start space-y-3">
           <h2 className="font-semibold text-xl">Introduccion</h2>
-          <a href="" onClick={(e) => scrollToSection(restRef,e)} className="">REST</a>
+          <a href="" onClick={(e) => scrollToSection(restRef,e)} onMouseEnter={() => setHoverOption("REST")} onMouseLeave={() => setHoverOption(null)}>REST
+            <div className={`${hoverOption === "REST" ? "w-full" : "w-0"} h-[2px] bg-primaryColorViolet transition-[width] duration-500`}></div>
+          </a>
         </li>
 
         <li className="text-lg font-light flex flex-col justify-center items-start space-y-3">
           <h2 className="font-semibold text-xl">Productos</h2>
 
-          {[{text:"Todos",ref:allRef},{text:"Buscar ID",ref:searchByIdRef}, {text:"Paginacion",ref:paginationRef}, {text:"Filtrar Productos",ref:filterRef}].map((option, i) => (
-            <div key={i}>
-              <a href="#" onClick={(e) => scrollToSection(option.ref, e)} onMouseEnter={() => setHoverOption(i+1)} onMouseLeave={() => setHoverOption(null)}>
+          {[{text:"Todos",ref:allRef},{text:"Buscar ID",ref:searchByIdRef}, {text:"Paginacion",ref:paginationRef}, {text:"Filtrar Productos",ref:filterRef}].map((option) => (
+            <div key={option.text}>
+              <a href="#" onClick={(e) => scrollToSection(option.ref, e)} onMouseEnter={() => setHoverOption(option.text)} onMouseLeave={() => setHoverOption(null)}>
                 {option.text}
-              <div className={`${hoverOption === i+1 ? "w-full" : "w-0"} h-[2px] bg-primaryColorViolet transition-[width] duration-500`}></div>
+              <div className={`${hoverOption === option.text ? "w-full" : "w-0"} h-[2px] bg-primaryColorViolet transition-[width] duration-500`}></div>
               </a>
               
             </div>

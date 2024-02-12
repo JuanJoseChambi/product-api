@@ -28,7 +28,8 @@ function Loading({fadeSwitch, timeFade = 500, text = "Cargando"}:LoadingProp) {
       }, [fadeSwitch]);
 
   return (
-    <div className={`fixed flex justify-center items-center top-0 w-full h-screen bg-[#fdfdfd]  ${fadeSwitch ? `opacity-0 overflow-y-visible` : "opacity-100 overflow-hidden"} transition-[transform_opacity_display] duration-700`} ref={LoadingRef}>
+    <div className={`fixed flex flex-col justify-center items-center top-0 w-full h-screen bg-[#fdfdfd]  ${fadeSwitch ? `opacity-0 overflow-y-visible` : "opacity-100 overflow-hidden"} transition-[transform_opacity_display] duration-700`} ref={LoadingRef}>
+        <i className='text-4xl mb-2 bx bx-loader-alt bx-spin' ></i>
         <h3>{text}</h3>
     </div>
   )
