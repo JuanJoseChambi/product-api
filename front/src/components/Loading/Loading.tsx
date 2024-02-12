@@ -40,5 +40,4 @@ function Loading({fadeSwitch, timeFade = 500, text = "Cargando"}:LoadingProp) {
     </div>
   )
 }
-                // HACER QUE APAREZACE EL SCROLLL DE NUEVO
 export default Loading
