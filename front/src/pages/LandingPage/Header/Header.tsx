@@ -6,7 +6,7 @@ function Header() {
     <header className="">
 
       <section className="area w-full flex flex-col justify-center items-center py-5 bg-redd-500">
-        <article className="relative flex justify-center items-center text-7xl md:text-9xl  tracking-widest pt-36 ">
+        <article className="relative flex justify-center items-center text-center text-7xl md:text-9xl  tracking-widest pt-36 ">
           <h2 className="absolute text-[200px] font-semibold text-[#18181894] -z-10 blur-sm">P.A</h2>
           <h2 className="font-medium">Product Api</h2>
         </article>
