@@ -11,8 +11,9 @@ interface MenuItemProp {
 function MenuItem({to, label, hover, setHover} : MenuItemProp) {
   return (
     <Link to={to}>
-        <li className="cursor-pointer" onMouseEnter={() => setHover(label)} onMouseLeave={() => setHover(null)}>{label}
-            <div className={`${hover === label ? "w-full" : "w-0"} h-[1px] bg-primaryColorViolet transition-[width] duration-500`}></div>
+        <li className="cursor-pointer" onMouseEnter={() => setHover(label)} onMouseLeave={() => setHover(null)}>
+                {label}
+                <div className={`${hover === label ? "w-full" : "w-0"} h-[1px] bg-primaryColorViolet transition-[width] duration-500`}></div>
         </li>
     </Link>
   )
