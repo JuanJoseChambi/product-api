@@ -13,11 +13,10 @@ function Footer() {
             <ul className="flex justify-center items-center font-light space-x-5 text-sm">
               <Link to={"/"}>
 
-              <picture className="w-[80px] h-[80px] flex justify-center items-center bg-redd-500 pointer-events-none select-none">
+              <picture className="w-[80px] h-[80px] flex justify-center items-center bg-redd-500 pointer-events-none select-none drop-shadow-[3px_3px_2.2px_#8e8e8e]">
                 <img src={PALogo} alt="PA" className="pointer-events-none select-none"/>
               </picture>
 
-                {/* <li className="cursor-pointer textDegrade font-semibold text-3xl drop-shadow-[3px_3px_2.5px_gray]">PA</li> */}
               </Link>
 
             </ul>

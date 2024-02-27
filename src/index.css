@@ -15,10 +15,10 @@
         @apply block text-grayCode
     }
     .textDegrade {
-        background-image: -moz-linear-gradient(left, black, #AA3EFF); /* Firefox */
-        background-image: -o-linear-gradient(left, black,#AA3EFF); /* Opera */
-        background-image: linear-gradient(to left, black, #AA3EFF); /* Estándar */
-        background-image: -webkit-linear-gradient(top,black,#AA3EFF
+        background-image: -moz-linear-gradient(left, #183D8E, #984F96); /* Firefox */
+        background-image: -o-linear-gradient(left, #183D8E,#984F96); /* Opera */
+        background-image: linear-gradient(to left, #183D8E, #984F96); /* Estándar */
+        background-image: -webkit-linear-gradient(left,#183D8E,#984F96
         ); /* Safari y Chrome */
         -webkit-background-clip: text;
         color: transparent;

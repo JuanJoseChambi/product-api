@@ -15,8 +15,8 @@ function Nav() {
     <nav className="w-[90%] h-[70px] mx-auto flex justify-between  border-b border-neutral-500 items-center bg-greend-500">
         <Link to={"/"}>
 
-            <picture className="w-[80px] h-[80px] flex justify-center items-center bg-redd-500 pointer-events-none select-none">
-                <img src={PALogo} alt="PA" className="pointer-events-none select-none"/>
+            <picture className="w-[80px] h-[80px] flex justify-center items-center bg-redd-500 pointer-events-none select-none drop-shadow-[3px_3px_2.2px_#8e8e8e]">
+                <img src={PALogo} alt="Product API Logo" className="pointer-events-none select-none"/>
             </picture>
 
         </Link>
