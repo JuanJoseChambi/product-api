@@ -91,7 +91,7 @@ function ControlApi() {
   }
 
   async function handlerAllProducts() {
-  
+
     try {
       const response = await fetch(`${VITE_SRV}/product/all`);
       if (!response.ok) {
@@ -180,11 +180,13 @@ function ControlApi() {
   }
 
   async function handlerDeleteProduct(id:string) {
+
     await fetch(`${VITE_SRV}/product/delete/${id}`,{
       method:"DELETE"
     })
     handlerAllProducts()
   }
+  
   return (
     <header className="flex flex-col justify-center items-center py-16 bg-white">
 
