@@ -91,6 +91,7 @@ function ControlApi() {
   }
 
   async function handlerAllProducts() {
+  
     try {
       const response = await fetch(`${VITE_SRV}/product/all`);
       if (!response.ok) {
