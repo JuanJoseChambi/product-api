@@ -1,27 +1,10 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# PRODUCT API
+<i>Products API es una plataforma de desarrollo web que ofrece una API gratuita especialmente diseñada para proyectos E-commerce. Además de proporcionar datos esenciales para tu proyecto, se destaca como una herramienta de documentación integral para desarrolladores. Este servicio va más allá de simplemente suministrar información; brinda oportunidades valiosas para practicar y perfeccionar habilidades en áreas cruciales como autenticación, billeteras virtuales y seguridad.<i>
+# FUNCIONES:
+   - Obtener todos los productos
+   - Busqueda por ID
+   - Paginacion, por cada pagina 20
+   - Filtro por: Nombre, Marca, Categoria y Tipo.
+<br>
+El proyecto se ira actualizando cuando se encuetre el tiempo para realizarlo
+<img src="https://product-api-mu-seven.vercel.app/assets/PALogo-311c984d.png" class=""/>
